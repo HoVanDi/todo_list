@@ -1,0 +1,78 @@
+*{
+  margin: 0;
+}
+
+.container {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  max-width: 608px;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+.container .todo{
+  color: #333;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1.62px;
+  margin-bottom: 58px;
+}
+
+.container .navigation{
+  color: #333;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  gap: 114px;
+}
+
+
+.container .all-line {
+  padding: 2px 45px;
+  border-radius: 4px 4px 0px 0px;
+  background: #2F80ED;
+}
+
+.navigation-bar {
+  margin-bottom: 15px;
+}
+
+.navigation-bar:hover {
+  cursor: pointer;
+}
+
+
+
+hr{
+  background: #BDBDBD;
+  margin-bottom: 16px;
+}
+
+input#month-input {
+  padding: 20px 0px 19px 12px;
+  width: 75.7%;
+  margin-right: 21px;
+  border-radius: 12px;
+  border: 1px solid #BDBDBD;
+  outline: none;
+  color: #828282;
+  font-size: 14px;
+}
+
+button.btn {
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  border-width:0;
+  padding: 20px 40px;
+  border-radius: 12px;
+  background: #2F80ED;
+  box-shadow: 0px 2px 6px 0px rgba(127, 177, 243, 0.40);
+}
+
+button.btn:hover {
+cursor: pointer;
+}
+
