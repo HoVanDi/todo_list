@@ -1,4 +1,4 @@
-
+/* 
 .container .navigation {
     color: #333;
     font-family: Montserrat;
@@ -6,7 +6,6 @@
     font-weight: 600;
     display: flex;
     justify-content: center;
-    gap: 114px;
     border-bottom: 1px solid #BDBDBD;
     margin-bottom: 16px;
   }
@@ -17,4 +16,17 @@
     border-radius: 4px 4px 0px 0px;
     background: #2F80ED;
   }
-  
+   */
+
+   .navigation-bar.active::before {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: inline-block;
+  width: 60%;
+  height: 4px;
+  content: '';
+  background-color: #2f80ed;
+  border-radius: 4px 4px 0 0;
+  transform: translateX(-50%);
+}

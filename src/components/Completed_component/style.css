@@ -6,7 +6,6 @@
     font-weight: 600;
     display: flex;
     justify-content: center;
-    gap: 114px;
     border-bottom: 1px solid #BDBDBD;
     margin-bottom: 16px;
   }
@@ -17,4 +16,16 @@
     border-radius: 4px 4px 0px 0px;
     background: #2F80ED;
   }
+
+  .navigation-all,  .navigation-active {
+    width: 100%;
+    position: relative;
+    padding: 16px 12%;
+} 
+
+.navigation-completed {
+  width: 100%;
+  position: relative;
+  padding: 16px 10.1%;
+}
   

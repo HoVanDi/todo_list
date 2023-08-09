@@ -2,15 +2,9 @@
     margin-bottom: 32px;
   }
   
-  .navigation-bar {
-    margin-bottom: 15px;
-  }
-  
   .navigation-bar:hover {
     cursor: pointer;
   }
-  
-  
   
   input#month-input {
     padding: 20px 0px 19px 12px;
