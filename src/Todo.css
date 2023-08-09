@@ -1,15 +1,20 @@
-*{
+* {
   margin: 0;
 }
-
+a {
+  color: #333;
+  text-decoration-line: none;
+}
 .container {
+  position: relative;
   font-family: 'Raleway', sans-serif;
   text-align: center;
   max-width: 608px;
   margin: 0 auto;
   margin-top: 32px;
 }
-.container .todo{
+
+.container .todo {
   color: #333;
   font-size: 36px;
   font-weight: 700;
@@ -17,7 +22,7 @@
   margin-bottom: 58px;
 }
 
-.container .navigation{
+.container .navigation {
   color: #333;
   font-family: Montserrat;
   font-size: 14px;
@@ -34,6 +39,10 @@
   background: #2F80ED;
 }
 
+.container .form {
+  margin-bottom: 32px;
+}
+
 .navigation-bar {
   margin-bottom: 15px;
 }
@@ -42,9 +51,7 @@
   cursor: pointer;
 }
 
-
-
-hr{
+hr {
   background: #BDBDBD;
   margin-bottom: 16px;
 }
@@ -65,7 +72,7 @@ button.btn {
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  border-width:0;
+  border-width: 0;
   padding: 20px 40px;
   border-radius: 12px;
   background: #2F80ED;
@@ -73,6 +80,82 @@ button.btn {
 }
 
 button.btn:hover {
-cursor: pointer;
+  cursor: pointer;
 }
 
+
+.container .result {
+  display: flex;
+  align-items: center;
+  margin-bottom: 27px;
+
+}
+
+.container .result .checkbox {
+  border-radius: 4px;
+  width: 24px;
+  border: 1px solid #828282;
+  height: 24px;
+  margin-right: 7px;
+}
+
+.container .result .text-result {
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#text-result_item {
+  text-decoration-line: line-through;
+}
+
+#checkbox-item {
+  background: #2F80ED;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.result .icon-delete {
+  right: 0px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.result .checkbox svg path {
+  fill: #fff;
+}
+
+.result .icon-delete svg path {
+  fill: #BDBDBD;
+}
+
+.container .btn-deleteall {
+  position: absolute;
+  display: flex;
+  justify-content: end;
+  right: 0px;
+  padding: 13px 27px 11px 26px;
+  border-radius: 4px;
+  background: #EB5757;
+}
+
+.btn-deleteall .icon-delete {
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  margin-right: 3px;
+}
+
+.btn-deleteall .text-delete {
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.checkbox,
+.btn-deleteall,
+.icon-delete:hover {
+  cursor: pointer;
+}

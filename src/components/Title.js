@@ -2,8 +2,8 @@ import React from 'react'
 
 const Title = () => {
   return (
-    <div>
-      
+    <div className="todo">
+      #todo
     </div>
   )
 }
