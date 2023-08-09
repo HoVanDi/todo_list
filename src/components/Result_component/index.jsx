@@ -1,7 +1,7 @@
 import React from 'react'
+import "./style.css"
 
-const Body = ({ activeTab }) => {
-  
+const index = ({ activeTab }) => {
   return (
     <div className="body">
 
@@ -86,4 +86,4 @@ const Body = ({ activeTab }) => {
   )
 }
 
-export default Body
+export default index
