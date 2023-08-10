@@ -4,7 +4,6 @@ import "./style.css"
 const index = ({ activeTab }) => {
   return (
     <div className="body">
-
       {activeTab === 'all' && (
         <div>
           <div className="form">

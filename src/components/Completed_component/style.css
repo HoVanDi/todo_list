@@ -29,3 +29,18 @@
   padding: 16px 10.1%;
 }
   
+
+.navigation-all:hover{
+  cursor: pointer;
+  background-color: #dfdfdf54;
+}
+
+.navigation-active:hover{
+  cursor: pointer;
+  background-color: #dfdfdf54;
+}
+
+
+.navigation-completed:hover {
+  background-color: #dfdfdf54;
+}
