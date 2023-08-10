@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import "./Todo.css";
-
 import Title_component from "./components/Title_component"
 import Result_component from './components/Result_component';
 import Home_component from './components/Home_component';
 import Active_component from './components/Active_component';
 import Completed_component from './components/Completed_component';
+
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('all');
