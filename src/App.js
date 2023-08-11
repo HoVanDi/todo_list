@@ -15,7 +15,7 @@ const App = () => {
       <div className="container">
         <div className="maincontent">
           <Title_component></Title_component>
-          <div className="navigation">
+          <div className="wrap-menu">
             <Home_component setActiveTab={setActiveTab} activeTab={activeTab}></Home_component>
             <Active_component setActiveTab={setActiveTab} activeTab={activeTab}></Active_component>
             <Completed_component setActiveTab={setActiveTab} activeTab={activeTab}></Completed_component>

@@ -32,7 +32,11 @@ const Index = ({ activeTab }) => {
     const newItems = items.filter((item) => !item.showTick);
     setItems(newItems);
   };
-
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleAddItem();
+    }
+}
 
   return (
     <div className="body">
@@ -46,6 +50,7 @@ const Index = ({ activeTab }) => {
               placeholder="add details"
               value={inputValue}
               onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
             />
             <button className="btn" onClick={handleAddItem}>
               Add

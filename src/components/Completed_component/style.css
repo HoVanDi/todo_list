@@ -43,4 +43,5 @@
 
 .navigation-completed:hover {
   background-color: #dfdfdf54;
+  cursor: pointer;
 }
