@@ -1,6 +1,4 @@
-
-
-.navigation-bar.active::before {
+.navigationBar.active::before {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -12,3 +10,14 @@
   border-radius: 4px 4px 0 0;
   transform: translateX(-50%);
 }
+  .navigationAll{
+    width: 100%;
+    position: relative;
+    padding: 16px 12%;
+} 
+
+.navigationAll:hover{
+  cursor: pointer;
+  background-color: #dfdfdf54;
+}
+

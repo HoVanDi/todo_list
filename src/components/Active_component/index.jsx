@@ -1,11 +1,11 @@
 import React from 'react'
-import "./style.css"
+import styles from './style.module.css'
 import { Link } from 'react-router-dom';
 const index = ({ setActiveTab,  activeTab }) => {
   const isActive = activeTab === 'active';
   return (
-    <div className="navigation-active" onClick={() => setActiveTab('active')}>
-    <div className={`navigation-bar ${isActive ? 'active' : ''}`}>
+    <div className={styles.navigationActive} onClick={() => setActiveTab('active')}>
+    <div className={`${styles.navigationBar} ${isActive ? styles.active : ''}`}>
     <Link to="/">Active</Link>
     </div>
   </div>
