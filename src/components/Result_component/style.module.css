@@ -1,0 +1,109 @@
+.form {
+  margin-bottom: 32px;
+}
+
+.navigation-bar:hover {
+  cursor: pointer;
+}
+
+input.formControl {
+  padding: 20px 0px 19px 12px;
+  width: 75.7%;
+  margin-right: 26.5px;
+  border-radius: 12px;
+  border: 1px solid #bdbdbd;
+  outline: none;
+  color: #828282;
+  font-size: 14px;
+}
+
+button.btn {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  border-width: 0;
+  padding: 20px 40px;
+  border-radius: 12px;
+  background: #2f80ed;
+  box-shadow: 0px 2px 6px 0px rgba(127, 177, 243, 0.4);
+}
+
+button.btn:hover {
+  cursor: pointer;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  margin-bottom: 27px;
+}
+
+.result .checkBox {
+  border-radius: 4px;
+  width: 24px;
+  border: 1px solid #828282;
+  height: 24px;
+  margin-right: 7px;
+}
+
+.result .textResult {
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.textResult.textResult_Item {
+  text-decoration: line-through;
+}
+
+.checkboxItem {
+  background: #2f80ed;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.result .iconDelete {
+  right: 0px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.result .checkBox svg path {
+  fill: #fff;
+}
+
+.result .iconDelete svg path {
+  fill: #bdbdbd;
+}
+
+.btnDeleteall {
+  position: absolute;
+  display: flex;
+  right: 0px;
+  padding: 13px 27px 11px 26px;
+  border-radius: 4px;
+  background: #eb5757;
+  align-items: center;
+}
+
+.btnDeleteall .iconDelete {
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  margin-right: 3px;
+}
+
+.btnDeleteall .textDelete {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.checkBox,
+.btnDeleteall,
+.iconDelete:hover {
+  cursor: pointer;
+}
