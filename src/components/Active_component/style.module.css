@@ -17,10 +17,7 @@
   padding: 16px 12%;
 }
 
-
-
 .navigationActive:hover {
   cursor: pointer;
   background-color: #dfdfdf54;
 }
-

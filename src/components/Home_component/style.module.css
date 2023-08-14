@@ -5,19 +5,18 @@
   display: inline-block;
   width: 60%;
   height: 4px;
-  content: '';
+  content: "";
   background-color: #2f80ed;
   border-radius: 4px 4px 0 0;
   transform: translateX(-50%);
 }
-  .navigationAll{
-    width: 100%;
-    position: relative;
-    padding: 16px 12%;
-} 
+.navigationAll {
+  width: 100%;
+  position: relative;
+  padding: 16px 12%;
+}
 
-.navigationAll:hover{
+.navigationAll:hover {
   cursor: pointer;
   background-color: #dfdfdf54;
 }
-

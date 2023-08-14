@@ -10,10 +10,10 @@ const App = () => {
   const [activeTab, setActiveTab] = useState("all");
   return (
     <Router>
-      <div className="container">
-        <div className="maincontent">
-          <div className="todo">#todo</div>
-          <div className="wrap-menu">
+      <div className='container'>
+        <div className='maincontent'>
+          <div className='todo'>#todo</div>
+          <div className='wrap-menu'>
             <Home_component
               setActiveTab={setActiveTab}
               activeTab={activeTab}
@@ -29,7 +29,7 @@ const App = () => {
           </div>
           <Routes>
             <Route
-              path="/"
+              path='/'
               element={<Result_component activeTab={activeTab} />}
             />
           </Routes>
