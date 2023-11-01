@@ -21,3 +21,9 @@
   background-color: #dfdfdf54;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .navigationCompleted {
+    padding: 16px 5.1%;
+  }
+}

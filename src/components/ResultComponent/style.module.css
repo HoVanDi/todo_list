@@ -113,8 +113,8 @@ button.btn:hover {
     width: max-content;
     margin-top: 70px;
     padding: 20px 20px;
-    position:absolute;
-    right: 0;
+    position: absolute;
+    right: 30px;
   }
 
   input.formControl {
@@ -124,5 +124,13 @@ button.btn:hover {
   .form {
     display: grid;
     margin-bottom: 90px;
+  }
+
+  .btnDeleteall {
+    right: 30px;
+  }
+
+  .result .iconDelete {
+    right: 30px;
   }
 }
