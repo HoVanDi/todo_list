@@ -107,3 +107,22 @@ button.btn:hover {
 .iconDelete:hover {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  button.btn {
+    width: max-content;
+    margin-top: 70px;
+    padding: 20px 20px;
+    position:absolute;
+    right: 0;
+  }
+
+  input.formControl {
+    width: initial;
+    margin-right: 0;
+  }
+  .form {
+    display: grid;
+    margin-bottom: 90px;
+  }
+}
