@@ -1,178 +1,158 @@
+import ActiveComponent from "../ActiveComponent/ActiveComponent";
+import CompletedTasks from "../CompletedComponent/CompletedTasks";
+import AllTasks from "../HomeComponent/AllTasks";
 import styles from "./style.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Index = ({ activeTab }) => {
   const [inputValue, setInputValue] = useState("");
-  const [items, setItems] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
-  const handleAddItem = () => {
+  useEffect(() => {
+    const fecthTasks = async () => {
+      try {
+        const reponse = await fetch("http://localhost:3001/tasks");
+        const data = await reponse.json();
+        setTasks(data);
+      } catch (e) {
+        console.error("Error fetching tasks: ", e.message);
+      }
+    };
+    fecthTasks();
+  }, []);
+
+  const handleAddTask = async () => {
     if (inputValue.trim() !== "") {
-      setItems([...items, { text: inputValue, showTick: false }]);
-      setInputValue("");
+      const newTask = { title: inputValue, completed: false, showTick: false };
+
+      try {
+        const reponse = await fetch("http://localhost:3001/tasks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ newTask }),
+        });
+
+        if (reponse.ok) {
+          const createdTask = await reponse.json();
+          setTasks([...tasks, createdTask]);
+          setInputValue("");
+        } else {
+          console.error("Error creating task: ", reponse.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching tasks: ", error.message);
+      }
     }
   };
 
-  const handleToggleTick = (index) => {
-    const newItems = [...items];
-    newItems[index].showTick = !newItems[index].showTick;
-    setItems(newItems);
+  const handleToggleTick = async (index) => {
+    const updatedTask = { ...tasks[index], showTick: !tasks[index].showTick };
+
+    try {
+      const response = await fetch(
+        `http://localhost:3001/tasks/${updatedTask.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ showTick: updatedTask.showTick }),
+        }
+      );
+
+      if (response.ok) {
+        const newTasks = [...tasks];
+        newTasks[index] = updatedTask;
+        setTasks(newTasks);
+      } else {
+        console.error("Error updating task");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
-  const handleDeleteItem = (index) => {
-    const newItems = [...items];
-    newItems.splice(index, 1);
-    setItems(newItems);
+  const handleDeleteTask = async (id) => {
+    try {
+      const reponse = await fetch(`http://localhost:3001/tasks/${id}`, {
+        method: "DELETE",
+      });
+
+      if (reponse.ok) {
+        setTasks(tasks.filter((task) => task.id !== id));
+      } else {
+        console.error("Error deleting task");
+      }
+    } catch (error) {}
   };
 
-  const handleDeleteAllChecked = () => {
-    const newItems = items.filter((item) => !item.showTick);
-    setItems(newItems);
+  const handleDeleteAllChecked = async () => {
+    try {
+      const tasksToDelete = tasks.filter((task) => task.showTick);
+      await Promise.all(
+        tasksToDelete.map((task) =>
+          fetch(`http://localhost:3001/tasks/${task.id}`, {
+            method: "DELETE",
+          })
+        )
+      );
+      setTasks(tasks.filter((task) => !task.showTick));
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      handleAddItem();
+      handleAddTask();
     }
   };
 
   return (
-    <div className='body'>
+    <div className="body">
       {activeTab !== "completed" && (
         <div>
           <div className={styles.form}>
             <input
-              type='text'
-              id='month-input'
+              type="text"
+              id="month-input"
               className={styles.formControl}
-              placeholder='add details'
+              placeholder="add details"
               value={inputValue}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
-            <button
-              className={styles.btn}
-              onClick={handleAddItem}
-            >
+            <button className={styles.btn} onClick={handleAddTask}>
               Add
             </button>
           </div>
+
           {activeTab === "all" && (
-            <div>
-              {items.map((item, index) => (
-                <div
-                  key={index}
-                  className={styles.result}
-                >
-                  <div
-                    className={`${styles.checkBox} ${
-                      item.showTick ? styles.checkboxItem : ""
-                    }`}
-                    onClick={() => handleToggleTick(index)}
-                  >
-                    {item.showTick && (
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        height='1em'
-                        viewBox='0 0 448 512'
-                      >
-                        <path d='M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z' />
-                      </svg>
-                    )}
-                  </div>
-                  <div
-                    className={`${styles.textResult} ${
-                      item.showTick ? styles.textResult_Item : ""
-                    }`}
-                  >
-                    {item.text}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <AllTasks tasks={tasks} handleToggleTick={handleToggleTick} />
           )}
 
           {activeTab === "active" && (
-            <div>
-              {items.map(
-                (item, index) =>
-                  !item.showTick && (
-                    <div
-                      key={index}
-                      className={styles.result}
-                    >
-                      <div
-                        className={`${styles.checkBox} ${
-                          item.showTick ? styles.checkboxItem : ""
-                        }`}
-                        onClick={() => handleToggleTick(index)}
-                      ></div>
-                      <div className={styles.textResult}>{item.text}</div>
-                    </div>
-                  )
-              )}
-            </div>
+            <ActiveComponent
+              tasks={tasks}
+              handleToggleTick={handleToggleTick}
+            />
           )}
         </div>
       )}
 
       {activeTab === "completed" && (
-        <div>
-          {items.map(
-            (item, index) =>
-              item.showTick && (
-                <div
-                  key={index}
-                  className={styles.result}
-                >
-                  <div
-                    className={`${styles.checkBox} ${styles.checkboxItem}`}
-                    onClick={() => handleToggleTick(index)}
-                  >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      height='1em'
-                      viewBox='0 0 448 512'
-                    >
-                      <path d='M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z' />
-                    </svg>
-                  </div>
-                  <div
-                    className={`${styles.textResult} ${styles.textResult_Item}`}
-                  >
-                    {item.text}
-                  </div>
-                  <div className={styles.iconDelete}>
-                    <svg
-                      onClick={() => handleDeleteItem(index)}
-                      xmlns='http://www.w3.org/2000/svg'
-                      height='1em'
-                      viewBox='0 0 448 512'
-                    >
-                      <path d='M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z' />
-                    </svg>
-                  </div>
-                </div>
-              )
-          )}
-          <div
-            className={styles.btnDeleteall}
-            onClick={handleDeleteAllChecked}
-          >
-            <div className={styles.iconDelete}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                height='1em'
-                viewBox='0 0 448 512'
-              >
-                <path d='M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z' />
-              </svg>
-            </div>
-            <div className={styles.textDelete}>delete all</div>
-          </div>
-        </div>
+        <CompletedTasks
+          tasks={tasks}
+          handleToggleTick={handleToggleTick}
+          handleDeleteTask={handleDeleteTask}
+          handleDeleteAllChecked={handleDeleteAllChecked}
+        />
       )}
     </div>
   );

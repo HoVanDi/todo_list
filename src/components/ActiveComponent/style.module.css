@@ -21,3 +21,63 @@
   cursor: pointer;
   background-color: #dfdfdf54;
 }
+
+.result {
+  display: flex;
+  align-items: center;
+  margin-bottom: 27px;
+}
+
+.result .checkBox {
+  border-radius: 4px;
+  width: 24px;
+  border: 1px solid #828282;
+  height: 24px;
+  margin-right: 7px;
+}
+
+.result .textResult {
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.textResult.textResult_Item {
+  text-decoration: line-through;
+}
+
+.checkboxItem {
+  background: #2f80ed;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.result .iconDelete {
+  right: 0px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.result .checkBox svg path {
+  fill: #fff;
+}
+
+.result .iconDelete svg path {
+  fill: #bdbdbd;
+}
+
+@media (max-width: 768px) {
+  button.btn {
+    width: max-content;
+    margin-top: 70px;
+    padding: 20px 20px;
+    position: absolute;
+    right: 30px;
+  }
+
+  .result .iconDelete {
+    right: 30px;
+  }
+}

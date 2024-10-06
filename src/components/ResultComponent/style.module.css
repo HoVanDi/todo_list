@@ -33,81 +33,6 @@ button.btn:hover {
   cursor: pointer;
 }
 
-.result {
-  display: flex;
-  align-items: center;
-  margin-bottom: 27px;
-}
-
-.result .checkBox {
-  border-radius: 4px;
-  width: 24px;
-  border: 1px solid #828282;
-  height: 24px;
-  margin-right: 7px;
-}
-
-.result .textResult {
-  color: #000;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.textResult.textResult_Item {
-  text-decoration: line-through;
-}
-
-.checkboxItem {
-  background: #2f80ed;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.result .iconDelete {
-  right: 0px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-}
-
-.result .checkBox svg path {
-  fill: #fff;
-}
-
-.result .iconDelete svg path {
-  fill: #bdbdbd;
-}
-
-.btnDeleteall {
-  position: absolute;
-  display: flex;
-  right: 0px;
-  padding: 13px 27px 11px 26px;
-  border-radius: 4px;
-  background: #eb5757;
-  align-items: center;
-}
-
-.btnDeleteall .iconDelete {
-  fill: #fff;
-  display: flex;
-  align-items: center;
-  margin-right: 3px;
-}
-
-.btnDeleteall .textDelete {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.checkBox,
-.btnDeleteall,
-.iconDelete:hover {
-  cursor: pointer;
-}
-
 @media (max-width: 768px) {
   button.btn {
     width: max-content;
@@ -124,13 +49,5 @@ button.btn:hover {
   .form {
     display: grid;
     margin-bottom: 90px;
-  }
-
-  .btnDeleteall {
-    right: 30px;
-  }
-
-  .result .iconDelete {
-    right: 30px;
   }
 }
