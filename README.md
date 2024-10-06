@@ -2,7 +2,6 @@
 
 
 ## Available Scripts
-clone GitHub link: ""
 
 Before running project install:
 ### `npm install`
